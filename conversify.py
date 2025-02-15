@@ -96,4 +96,4 @@ class Conversify:
                 f.write(output)
             logging.info("Chat exported to file: %s", filename)
         else:
-            print(output)
+            return(output)

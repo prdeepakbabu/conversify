@@ -32,6 +32,13 @@ class Formatters:
             raise ValueError("Supported formats are: json, md, html")
 
     @staticmethod
+    def truncate_snippet(snippet, max_length=100):
+        """Truncates the snippet if it exceeds max_length."""
+        if len(snippet) > max_length:
+            return snippet[:50] + "..." + snippet[-50:]
+        return snippet
+
+    @staticmethod
     def to_json(chat_data):
         """Converts chat data to JSON format.
 
@@ -56,11 +63,23 @@ class Formatters:
         Returns:
             str: Markdown formatted chat conversation.
         """
+
         logging.info("Formatting chat to Markdown")
+        max_name_length = max(len(user_name), len(bot_name))
         md = ""
         for turn in chat_data:
-            md += f"**{user_name}:** {turn['turn']['user_msg']}  \n"
-            md += f"**{bot_name}:** {turn['turn']['response']}  \n\n"
+            md += f"\n**Turn {turn['turn_number']}**  \n"
+            md += f"**{user_name.ljust(max_name_length)}:** {turn['turn']['user_msg']}  \n"
+            md += f"**{bot_name.ljust(max_name_length)}:** {turn['turn']['response']}  \n"
+
+            if turn["turn"]["source_names"] and turn["turn"]["source_urls"]:
+                sources = " | ".join([f"[{name}]({url})" for name, url in
+                                      zip(turn["turn"]["source_names"], turn["turn"]["source_urls"])])
+                md += f"source: {sources}  \n"
+            if turn["turn"]["source_snippets"]:
+                for snippet in turn["turn"]["source_snippets"]:
+                    md += f"> {Formatters.truncate_snippet(snippet)}\\n"
+            md += "\n"
         return md
 
     @staticmethod
@@ -75,11 +94,22 @@ class Formatters:
         Returns:
             str: HTML formatted chat conversation.
         """
+
         logging.info("Formatting chat to HTML")
+        max_name_length = max(len(user_name), len(bot_name))
         html = '<div style="font-family: Arial, sans-serif;">'
         for turn in chat_data:
-            html += f'<p><b>{user_name}:</b> {turn["turn"]["user_msg"]}</p>'
-            html += f'<p><b>{bot_name}:</b> {turn["turn"]["response"]}</p>'
+            html += f'<p><strong>Turn {turn["turn_number"]}</strong><br/></p>'
+            html += f'<p><b>{user_name.ljust(max_name_length)}:</b> {turn["turn"]["user_msg"]}<br/></p>'
+            html += f'<p><b>{bot_name.ljust(max_name_length)}:</b> {turn["turn"]["response"]}<br/></p>'
+
+            if turn["turn"]["source_names"] and turn["turn"]["source_urls"]:
+                sources = " | ".join([f'<a href="{url}" target="_blank">{name}</a>' for name, url in
+                                      zip(turn["turn"]["source_names"], turn["turn"]["source_urls"])])
+                html += f'<p><strong>Source:</strong> {sources}<br/></p>'
+            if turn["turn"]["source_snippets"]:
+                for snippet in turn["turn"]["source_snippets"]:
+                    html += f'<blockquote style="white-space: pre-wrap;">{Formatters.truncate_snippet(snippet)}</blockquote>'
             html += "<hr/>"
         html += "</div>"
         return html
