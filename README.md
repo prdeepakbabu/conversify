@@ -2,13 +2,15 @@
 
 Conversify is a Python package designed to structure, format, and beautify chat conversations. It supports **JSON, Markdown, and HTML** formats, with themes to enhance the visual appeal of conversations.A lightweight Python package that formats and visualizes chat interactions with pretty-printing, different output styles, supporting themes and optional export options. Conversify is designed to solve the challenges of structuring, formatting, and presenting conversational data in a clear and readable manner. In AI-driven applications, chat interactions often lack consistency, making it difficult to analyze, document, or visualize them effectively. Conversify standardizes chat logs by offering flexible formatting options in JSON, Markdown, and HTML, ensuring conversations are well-organized and easily interpretable. It enhances readability through proper indentation, metadata integration, and turn numbering, while also supporting hyperlinked citations and source snippets for traceability. Whether for chatbot development, customer interaction analysis, or conversational AI research, Conversify simplifies the process by transforming raw chat data into structured, professional, and shareable formats.
 
-### 🎯 Features
-✅ **Add multiple conversation turns** dynamically.  
-✅ **Format chat conversations** into JSON, Markdown, and HTML.  
-✅ **Support for themes** (`bw`, `color`, `modern`, `traditional`) in HTML output.  
-✅ **Export chats** to a file or print inline.  
-✅ **Easily configurable** (user/bot names, themes, output formats).  
-✅ **Unit-tested** for robustness.
+🎯 **Features**
+- Add multiple conversation turns dynamically.
+- Format chat conversations into JSON, Markdown, and HTML.
+- Support for themes (`bw`, `color`, `modern`, `traditional`) in HTML output.
+- Export chats to a file or print inline.
+- Easily configurable (user/bot names, themes, output formats).
+- Unit-tested for robustness.
+
+
 ---
 ## 📦 Installation
 ```sh
