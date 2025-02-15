@@ -1,19 +1,15 @@
 # Conversify 🚀
 
-![Conversify Logo](https://via.placeholder.com/800x200?text=Conversify)
-
-## 📖 Overview
 Conversify is a Python package designed to structure, format, and beautify chat conversations. It supports **JSON, Markdown, and HTML** formats, with themes to enhance the visual appeal of conversations.A lightweight Python package that formats and visualizes chat interactions with pretty-printing, different output styles, supporting themes and optional export options.
-
 
 ---
 ## 🎯 Features
-✅ **Add multiple conversation turns** dynamically.
-✅ **Format chat conversations** into JSON, Markdown, and HTML.
-✅ **Support for themes** (`bw`, `color`, `modern`, `traditional`) in HTML output.
-✅ **Export chats** to a file or print inline.
-✅ **Easily configurable** (user/bot names, themes, output formats).
-✅ **Unit-tested** for robustness.
+✅ **Add multiple conversation turns** dynamically.  
+✅ **Format chat conversations** into JSON, Markdown, and HTML.  
+✅ **Support for themes** (`bw`, `color`, `modern`, `traditional`) in HTML output.  
+✅ **Export chats** to a file or print inline.  
+✅ **Easily configurable** (user/bot names, themes, output formats).  
+✅ **Unit-tested** for robustness.  
 
 ---
 ## 📦 Installation
@@ -78,12 +74,6 @@ Conversify(format="json", theme="bw", export=False, user_name="User", bot_name="
 | bot_name   | `str`  | `Bot`   | Name of the chatbot |
 
 ---
-## 🧪 Running Unit Tests
-```sh
-pytest tests/
-```
-
----
 ## 🤝 Contributing
 1. Fork the repository 🍴
 2. Create a feature branch 🌱
@@ -96,6 +86,6 @@ MIT License © 2025 Conversify Developers
 
 ---
 ## 📢 Connect With Us
-💬 Discussions: [GitHub Discussions](https://github.com/conversify/discussions)  
+💬 Discussions: [GitHub Discussions](https://github.com/prdeepakbabu/conversify/issues)  
 🐦 Twitter: [@ConversifyAI](https://twitter.com/ConversifyAI)  
 📧 Email: support@conversify.com
